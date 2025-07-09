@@ -1,14 +1,13 @@
-#!/usr/bin/env python3
-import sys
-
-def main():
-    args = sys.argv[1:]
-    count = len(args)
-    plural = "s" if count != 1 else ""
-    end_char = ":" if count > 0 else "."
-    print(f"{count} argument{plural}{end_char}")
-    for i, arg in enumerate(args, start=1):
-        print(f"{i}: {arg}")
-
+#!/usr/bin/python3
 if __name__ == "__main__":
-    main()
+    import sys
+
+    arg_count = len(sys.argv) - 1
+    if arg_count == 0:
+        print("0 arguments.")
+    elif arg_count == 1:
+        print("1 argument:")
+    else:
+        print("{} arguments:".format(arg_count))
+    for i in range(1, len(sys.argv)):
+        print("{}: {}".format(i, sys.argv[i]))
