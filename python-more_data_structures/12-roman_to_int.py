@@ -1,3 +1,24 @@
 #!/usr/bin/python3
-def multiply_list_map(my_list=[], number=0):
-    return list(map(lambda x: x * number, my_list))
+def roman_to_int(roman_string):
+    if not isinstance(roman_string, str) or roman_string is None:
+        return 0
+
+    values = {
+        'I': 1, 'V': 5, 'X': 10, 'L': 50,
+        'C': 100, 'D': 500, 'M': 1000
+    }
+    total = 0
+    length = len(roman_string)
+
+    for i in range(length):
+        current_value = values.get(roman_string[i], 0)
+        if i + 1 < length:
+            next_value = values.get(roman_string[i + 1], 0)
+            if current_value < next_value:
+                total -= current_value
+            else:
+                total += current_value
+        else:
+            total += current_value
+
+    return total
